@@ -1,3 +1,3 @@
-# pomodoro
+# timer
 
-A Pomodoro timer with task tracking and productivity statistics.
+A timer with task tracking and productivity statistics.
