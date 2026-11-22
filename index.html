@@ -20,14 +20,14 @@
   </head>
   <body>
     <main>
-      <div class="timer">
+      <div class="timer" role="timer">
         <div class="time">
           <span class="minutes">25</span>
-          <span class="column">:</span>
+          <span class="colon">:</span>
           <span class="seconds">00</span>
         </div>
         <div class="buttons">
-          <button class="buttonPlay">
+          <button class="buttonPlay" aria-label="Play">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -40,7 +40,7 @@
               />
             </svg>
           </button>
-          <button class="buttonPause hide">
+          <button class="buttonPause hide" aria-label="Pause">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -53,7 +53,7 @@
               />
             </svg>
           </button>
-          <button class="buttonStop">
+          <button class="buttonStop" aria-label="Stop">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -66,7 +66,7 @@
               />
             </svg>
           </button>
-          <button class="buttonPlus">
+          <button class="buttonPlus" aria-label="Plus">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -79,7 +79,7 @@
               />
             </svg>
           </button>
-          <button class="buttonMinus">
+          <button class="buttonMinus" aria-label="Minus">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -96,7 +96,7 @@
       </div>
     </main>
     <footer>
-      <div class="themes">
+      <div class="themes" aria-label="toggle">
         <button class="buttonLight">
           <svg
             xmlns="http://www.w3.org/2000/svg"
