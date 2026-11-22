@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::selection {
+  color: none;
+  background: transparent;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+.light {
+  --number-color: #323239;
+  --svg-path-color: #323238;
+  --svg-path-active-color: #ffffff;
+  --bg-primary-color: #e6e6e6;
+  --bg-secondary-color: #e0e0e5;
+  --button-active-color: #02789c;
+  --cs-primary: #b3b3b7;
+  --cs-secondary: #ffffff;
+  --cs-primary-active: #028ab3;
+  --cs-secondary-active: #026685;
+}
+
+.dark {
+  --number-color: #ffffff;
+  --svg-path-color: #c4c4cc;
+  --svg-path-active-color: #ffffff;
+  --bg-primary-color: #121214;
+  --bg-secondary-color: #29292e;
+  --button-active-color: #0a3442;
+  --cs-primary: #232327;
+  --cs-secondary: #2f2f35;
+  --cs-primary-active: #0c3c4c;
+  --cs-secondary-active: #092c38;
+}
