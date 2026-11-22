@@ -63,3 +63,28 @@ button {
 button.hide {
   display: none;
 }
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.timer .time {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  line-height: 16rem;
+  font-size: 12rem;
+  color: var(--number-color);
+  cursor: default;
+}
+
+.timer .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.timer .buttons svg path {
+  fill: var(--svg-path-color);
+}
