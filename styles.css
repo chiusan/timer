@@ -88,3 +88,22 @@ button.hide {
 .timer .buttons svg path {
   fill: var(--svg-path-color);
 }
+
+footer .themes {
+  position: absolute;
+  top: 2rem;
+  right: 5rem;
+}
+
+@media (min-width: 850px) {
+  main {
+    flex-direction: row;
+    gap: 10vw;
+  }
+
+  footer .themes {
+    position: absolute;
+    top: 6.4rem;
+    right: 6.4rem;
+  }
+}
