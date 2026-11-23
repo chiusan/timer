@@ -11,6 +11,10 @@ export default function Theme() {
       showButton.classList.remove("hide");
       hideButton.classList.add("hide");
       setTheme("light");
+    } else {
+      showButton.classList.remove("hide");
+      hideButton.classList.add("hide");
+      setTheme("dark");
     }
   }
 

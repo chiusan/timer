@@ -1,6 +1,6 @@
 export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
   let timerTimeOut;
-  let minutes = Number(minutesDisplay, textContent);
+  let minutes = Number(minutesDisplay.textContent);
 
   function updateDisplay(newMinutes, seconds) {
     newMinutes = newMinutes === undefined ? minutes : newMinutes;
@@ -18,7 +18,6 @@ export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
       updateDisplay(minutes, 0);
 
       if (isFinished) {
-        timeEnd();
         resetControls();
         updateDisplay();
         return;
