@@ -22,11 +22,11 @@ export default function Theme() {
     if (localStorage.getItem("theme") === "dark") {
       buttonLight.classList.remove("hide");
       buttonDark.classList.add("hide");
-      setTheme("light");
+      setTheme("dark");
     } else {
       buttonDark.classList.remove("hide");
       buttonLight.classList.add("hide");
-      setTheme("dark");
+      setTheme("light");
     }
   })();
   return {
