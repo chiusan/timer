@@ -28,7 +28,7 @@ body {
   color: var(--fg);
 }
 
-main {
+.timer-section {
   min-height: 100dvh;
   padding: 1.6rem;
   display: flex;
