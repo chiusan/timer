@@ -1,35 +1,38 @@
 import { buttonLight, buttonDark } from "./elements.js";
 
+const KEY = "theme";
+
+function readSaved() {
+  try {
+    const value = localStorage.getItem(KEY);
+    return value === "light" || value === "dark" ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function save(name) {
+  try {
+    localStorage.setItem(KEY, name);
+  } catch {}
+}
+
 export default function Theme() {
-  function setTheme(themeName) {
-    localStorage.setItem("theme", themeName);
-    document.documentElement.className = themeName;
+  const root = document.documentElement;
+
+  function apply(name) {
+    root.className = name;
+    buttonLight.classList.toggle("hide", name === "light");
+    buttonDark.classList.toggle("hide", name === "dark");
   }
 
-  function toggle(hideButton, showButton) {
-    if (localStorage.getItem("theme") === "dark") {
-      showButton.classList.remove("hide");
-      hideButton.classList.add("hide");
-      setTheme("light");
-    } else {
-      showButton.classList.remove("hide");
-      hideButton.classList.add("hide");
-      setTheme("dark");
-    }
+  function toggle() {
+    const next = root.className === "dark" ? "light" : "dark";
+    save(next);
+    apply(next);
   }
 
-  (function () {
-    if (localStorage.getItem("theme") === "dark") {
-      buttonLight.classList.remove("hide");
-      buttonDark.classList.add("hide");
-      setTheme("dark");
-    } else {
-      buttonDark.classList.remove("hide");
-      buttonLight.classList.add("hide");
-      setTheme("light");
-    }
-  })();
-  return {
-    toggle,
-  };
+  apply(readSaved() ?? "light");
+
+  return { toggle };
 }
