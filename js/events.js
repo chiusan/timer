@@ -32,11 +32,7 @@ export default function ({ timer, controls, theme }) {
     timer.minus();
   });
 
-  buttonLight.addEventListener("click", function () {
-    theme.toggle(buttonLight, buttonDark);
-  });
+  buttonLight.addEventListener("click", theme.toggle);
 
-  buttonDark.addEventListener("click", function () {
-    theme.toggle(buttonDark, buttonLight);
-  });
+  buttonDark.addEventListener("click", theme.toggle);
 }
