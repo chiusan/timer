@@ -1,6 +1,7 @@
 export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
   let timerTimeOut;
   let minutes = Number(minutesDisplay.textContent);
+  let plannedMinutes = Number(minutesDisplay.textContent);
 
   function updateDisplay(newMinutes, seconds) {
     newMinutes = newMinutes === undefined ? minutes : newMinutes;
@@ -19,6 +20,7 @@ export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
 
       if (isFinished) {
         resetControls();
+        onFinish?.(plannedMinutes);
         updateDisplay();
         return;
       }
@@ -40,6 +42,8 @@ export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
       Number(minutesDisplay.textContent) + 1,
       Number(secondsDisplay.textContent),
     );
+
+    plannedMinutes = Number(minutesDisplay.textContent);
   }
 
   function minus() {
@@ -51,11 +55,15 @@ export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
     } else {
       updateDisplay(0, seconds);
     }
+
+    plannedMinutes = Number(minutesDisplay.textContent);
   }
 
   function reset() {
     updateDisplay(minutes, 0);
     clearTimeout(timerTimeOut);
+
+    plannedMinutes = Number(minutesDisplay.textContent);
   }
 
   function hold() {
