@@ -1,3 +1,4 @@
+/* Base */
 * {
   margin: 0;
   padding: 0;
@@ -26,8 +27,10 @@
 body {
   background: var(--bg);
   color: var(--fg);
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
+/* Timer */
 .timer-section {
   min-height: 100dvh;
   padding: 1.6rem;
@@ -45,7 +48,6 @@ body {
 }
 
 .timer .time {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: clamp(8rem, 28vw, 12rem);
   line-height: 1.2;
@@ -101,11 +103,6 @@ button svg {
 }
 
 @media (min-width: 850px) {
-  .timer {
-    flex-direction: row;
-    gap: 8vw;
-  }
-
   .timer .buttons {
     flex-wrap: nowrap;
     gap: 2rem;
@@ -121,4 +118,26 @@ button svg {
   button {
     transition: none;
   }
+}
+
+/* Label */
+.session-label {
+  width: min(32rem, 80vw);
+  padding: 1rem 0;
+  font: inherit;
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--muted);
+}
+
+.session-label::placeholder {
+  color: var(--muted);
+}
+
+.session-label:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
