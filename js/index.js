@@ -3,6 +3,7 @@ import Theme from "./theme.js";
 import { Timer } from "./timer.js";
 import Controls from "./controls.js";
 import { addSession } from "./sessions.js";
+import Stats from "./stats.js";
 import {
   buttonPlay,
   buttonPause,
@@ -27,3 +28,5 @@ const timer = Timer({
 const theme = Theme();
 
 Events({ timer, controls, theme });
+
+Stats();
