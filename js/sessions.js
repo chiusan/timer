@@ -10,6 +10,8 @@ export function loadSessions() {
 }
 
 export function addSession({ label, minutes }) {
+  if (!(minutes > 0)) return;
+
   const sessions = loadSessions();
   sessions.push({
     id: Date.now(),

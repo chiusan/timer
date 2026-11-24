@@ -21,6 +21,12 @@
       sizes="32x32"
       href="favicons/favicon-32x32.png"
     />
+    <script>
+      try {
+        document.documentElement.className =
+          localStorage.getItem("theme") || "light";
+      } catch {}
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <title>Timer</title>
   </head>
