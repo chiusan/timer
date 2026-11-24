@@ -12,16 +12,18 @@
 :root,
 .light {
   --bg: #fffaf6;
-  --fg: #282728;
-  --muted: #6b6b6b;
+  --fg: #060503;
+  --muted: #54515b;
   --accent: #aa0215;
+  --border: #ffdc98;
 }
 
 .dark {
   --bg: #1a1a1a;
   --fg: #f5efe4;
-  --muted: #b3a899;
+  --muted: #a59a8c;
   --accent: #ee781e;
+  --border: #6f5648;
 }
 
 body {
@@ -130,7 +132,7 @@ button svg {
   color: var(--fg);
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--muted);
+  border-bottom: 1px solid var(--border);
 }
 
 .session-label::placeholder {
