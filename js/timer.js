@@ -1,80 +1,87 @@
-export function Timer({ minutesDisplay, secondsDisplay, resetControls }) {
-  let timerTimeOut;
-  let minutes = Number(minutesDisplay.textContent);
-  let plannedMinutes = Number(minutesDisplay.textContent);
+export function Timer({
+  minutesDisplay,
+  secondsDisplay,
+  resetControls,
+  onFinish,
+}) {
+  const MIN_MINUTES = 1;
+  const MAX_MINUTES = 180;
 
-  function updateDisplay(newMinutes, seconds) {
-    newMinutes = newMinutes === undefined ? minutes : newMinutes;
-    seconds = seconds === undefined ? 0 : seconds;
-    minutesDisplay.textContent = String(newMinutes).padStart(2, "0");
-    secondsDisplay.textContent = String(seconds).padStart(2, "0");
+  let durationSec =
+    Number(minutesDisplay.textContent) * 60 +
+      Number(secondsDisplay.textContent) || 25 * 60;
+  let remainingSec = durationSec;
+  let endTime = 0;
+  let tickId = null;
+
+  function render(sec) {
+    const mm = String(Math.floor(sec / 60)).padStart(2, "0");
+    const ss = String(sec % 60).padStart(2, "0");
+    minutesDisplay.textContent = mm;
+    secondsDisplay.textContent = ss;
+    document.title = tickId ? `${mm}:${ss} · Timer` : "Timer";
+  }
+
+  function stopTicking() {
+    clearInterval(tickId);
+    tickId = null;
+  }
+
+  function tick() {
+    const left = Math.max(0, Math.ceil(endTime - Date.now()) / 1000);
+    render(left);
+    if (left === 0) finish();
+  }
+
+  function finish() {
+    stopTicking();
+    const minutes = durationSec / 60;
+    remainingSec = durationSec;
+    render(remainingSec);
+    resetControls();
+    onFinish?.(minutes);
   }
 
   function countdown() {
-    timerTimeOut = setTimeout(function () {
-      let seconds = Number(secondsDisplay.textContent);
-      let minutes = Number(minutesDisplay.textContent);
-      let isFinished = minutes <= 0 && seconds <= 0;
-
-      updateDisplay(minutes, 0);
-
-      if (isFinished) {
-        resetControls();
-        onFinish?.(plannedMinutes);
-        updateDisplay();
-        return;
-      }
-
-      if (seconds <= 0) {
-        seconds = 60;
-        --minutes;
-      }
-
-      --seconds;
-
-      updateDisplay(minutes, seconds);
-      countdown();
-    }, 1000);
-  }
-
-  function plus() {
-    updateDisplay(
-      Number(minutesDisplay.textContent) + 1,
-      Number(secondsDisplay.textContent),
-    );
-
-    plannedMinutes = Number(minutesDisplay.textContent);
-  }
-
-  function minus() {
-    let minutes = Number(minutesDisplay.textContent);
-    let seconds = Number(secondsDisplay.textContent);
-
-    if (minutes > 1) {
-      updateDisplay(minutes - 1, seconds);
-    } else {
-      updateDisplay(0, seconds);
-    }
-
-    plannedMinutes = Number(minutesDisplay.textContent);
-  }
-
-  function reset() {
-    updateDisplay(minutes, 0);
-    clearTimeout(timerTimeOut);
-
-    plannedMinutes = Number(minutesDisplay.textContent);
+    if (tickId) return;
+    endTime = Date.now() + remainingSec * 1000;
+    tickId = setInterval(tick, 250);
+    tick();
   }
 
   function hold() {
-    clearTimeout(timerTimeOut);
+    if (!tickId) return;
+    remainingSec = Math.max(1, Math.ceil(endTime - Date.now()) / 1000);
+    stopTicking();
+    render(remainingSec);
   }
 
+  function reset() {
+    stopTicking();
+    remainingSec = durationSec;
+    render(remainingSec);
+  }
+
+  function adjust(deltaMin) {
+    const idle = !tickId && remainingSec === durationSec;
+    if (!idle) return;
+    const next = Math.round(durationSec / 60) + deltaMin;
+    const clamped = Math.min(MAX_MINUTES, Math.max(MIN_MINUTES, next));
+    durationSec = remainingSec = clamped * 60;
+    render(remainingSec);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (tickId) tick();
+  });
+
+  render(remainingSec);
+
   return {
+    countdown,
     hold,
     reset,
-    minus,
-    plus,
-    countdown,
+    plus: () => adjust(1),
+    minus: () => adjust(-1),
   };
 }
