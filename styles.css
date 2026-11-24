@@ -16,6 +16,7 @@
   --muted: #54515b;
   --accent: #aa0215;
   --border: #ffcf75;
+  --grid: rgba(84, 81, 91, 0.2);
 }
 
 .dark {
@@ -24,6 +25,7 @@
   --muted: #a59a8c;
   --accent: #ee781e;
   --border: #6f5648;
+  --grid: rgba(165, 154, 140, 0.2);
 }
 
 body {
@@ -94,9 +96,11 @@ button svg {
 }
 
 .themes {
+  display: flex;
   position: fixed;
   top: 2rem;
   right: 2rem;
+  gap: 1.2rem;
 }
 
 .themes svg {
@@ -135,11 +139,6 @@ button svg {
 }
 
 /* Dialog */
-.themes {
-  display: flex;
-  gap: 1.2rem;
-}
-
 dialog {
   margin: auto;
   width: min(90vw, 56rem);
