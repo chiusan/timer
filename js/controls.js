@@ -1,19 +1,13 @@
 export default function Controls({ buttonPlay, buttonPause }) {
   function hideShowButton(hideButton, showButton) {
+    const hadFocus = document.activeElement === hideButton;
     hideButton.classList.add("hide");
     showButton.classList.remove("hide");
-  }
-
-  function play() {
-    hideShowButton(buttonPlay, buttonPause);
-  }
-
-  function pause() {
-    hideShowButton(buttonPause, buttonPlay);
+    if (hadFocus) showButton.focus();
   }
 
   return {
-    play,
-    pause,
+    play: () => hideShowButton(buttonPlay, buttonPause),
+    pause: () => hideShowButton(buttonPause, buttonPlay),
   };
 }
