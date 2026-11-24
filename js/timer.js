@@ -28,7 +28,7 @@ export function Timer({
   }
 
   function tick() {
-    const left = Math.max(0, Math.ceil(endTime - Date.now()) / 1000);
+    const left = Math.max(0, Math.ceil((endTime - Date.now()) / 1000));
     render(left);
     if (left === 0) finish();
   }
@@ -51,7 +51,7 @@ export function Timer({
 
   function hold() {
     if (!tickId) return;
-    remainingSec = Math.max(1, Math.ceil(endTime - Date.now()) / 1000);
+    remainingSec = Math.max(1, Math.ceil((endTime - Date.now()) / 1000));
     stopTicking();
     render(remainingSec);
   }
