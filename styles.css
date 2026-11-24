@@ -134,6 +134,60 @@ button svg {
   border-bottom-color: var(--accent);
 }
 
+/* Dialog */
+.themes {
+  display: flex;
+  gap: 1.2rem;
+}
+
+dialog {
+  margin: auto;
+  width: min(90vw, 56rem);
+  padding: 2.4rem;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  border-radius: 1.2rem;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+.stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats-header h2 {
+  font-size: 2rem;
+}
+
+.stats-close {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.8rem;
+  line-height: 1;
+  border-radius: 50%;
+}
+
+.stats-summary {
+  margin-top: 0.8rem;
+  font-size: 1.6rem;
+  color: var(--muted);
+}
+
+.stats-summary strong {
+  color: var(--fg);
+}
+
+.chart-wrap {
+  position: relative;
+  height: 26rem;
+  margin-top: 2rem;
+}
+
 @media (min-width: 850px) {
   .timer .buttons {
     flex-wrap: nowrap;
