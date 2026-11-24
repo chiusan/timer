@@ -104,6 +104,36 @@ button svg {
   height: 3.2rem;
 }
 
+/* Label */
+.session-label {
+  width: min(32rem, 80vw);
+  padding: 1rem 0;
+  font: inherit;
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--fg);
+  caret-color: var(--accent);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--border);
+  border-radius: 0;
+  user-select: text;
+  transition: border-color 0.2s;
+}
+
+.session-label::placeholder {
+  color: var(--muted);
+}
+
+.session-label:hover {
+  border-bottom-color: var(--muted);
+}
+
+.session-label:focus-visible {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
 @media (min-width: 850px) {
   .timer .buttons {
     flex-wrap: nowrap;
@@ -120,26 +150,9 @@ button svg {
   button {
     transition: none;
   }
-}
 
-/* Label */
-.session-label {
-  width: min(32rem, 80vw);
-  padding: 1rem 0;
-  font: inherit;
-  font-size: 1.6rem;
-  text-align: center;
-  color: var(--fg);
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.session-label::placeholder {
-  color: var(--muted);
-}
-
-.session-label:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
+  button,
+  .session-label {
+    transition: none;
+  }
 }
