@@ -159,6 +159,27 @@
         </button>
       </div>
     </footer>
+    <dialog id="stats-dialog" aria-labelledby="stats-title">
+      <div class="stats-header">
+        <h2 id="stats-title">Last 7 days</h2>
+        <button type="button" class="stats-close" aria-label="close statistics">
+          ×
+        </button>
+      </div>
+      <p class="stats-summary">
+        Today <strong id="stat-today">0</strong> min Total
+        <strong id="stat-total">0</strong> min
+      </p>
+      <div class="chart-wrap">
+        <canvas
+          id="stats-chart"
+          role="img"
+          aria-label="bar chart of focus minutes per day"
+        ></canvas>
+      </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.2/dist/chart.umd.min.js"></script>
     <script src="js/index.js" type="module"></script>
   </body>
 </html>
