@@ -4,6 +4,14 @@ A timer with task tracking and productivity statistics.
 
 **[demo](chiusan.github.io/timer/)**
 
+## Screenshots
+
+![light](./screenshots/light.png)
+![light-stats](./screenshots/light-stats.png)
+
+![dark](./screenshots/dark.png)
+![dark-stats](./screenshots/dark-stats.png)
+
 ## Features
 
 - Set any duration from 1 to 180 minutes
